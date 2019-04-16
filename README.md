@@ -1,5 +1,5 @@
 # Intro to version control with Git  
-September 27th, 2018  
+## September 27th, 2018  
 *Sean Browning*  
 
 ## Okay, how do I see this thing?
