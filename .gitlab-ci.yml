@@ -1,0 +1,13 @@
+variables:
+  CRAN: "http://repo.biotech.cdc.gov/cran/"
+
+pages:
+  only:
+    - master
+  script:
+    - echo "updating slides"
+    - R -e "install.packages(c('knitr', 'rmarkdown'), repos = c('${CRAN}'))"
+    - R -e "rmarkdown::render('Rmd/git_presentation.Rmd', output_file = '../public/index.html')"
+  artifacts:
+    paths:
+      - public

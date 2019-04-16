@@ -1,0 +1,11 @@
+# RStudio Misc files
+
+*.Rproj
+.Rproj.user/*
+.Rhistory
+.RData
+.Ruserdata
+
+# Locally generated HTML files
+Rmd/*.html
+.Rproj.user
