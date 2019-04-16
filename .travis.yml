@@ -4,9 +4,6 @@ branches:
   only:
     - master
 
-cache:
-  packages: yes
-
 script:
   - Rscript -e 'rmarkdown::render('Rmd/git_presentation.Rmd', output_file = '../docs/index.html')'
 
