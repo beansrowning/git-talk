@@ -12,7 +12,7 @@ jobs:
 
       - name: Build 🔧
         run: |
-          apt-get install rsync
+          apt-get update && apt-get install -y rsync
           R -e "rmarkdown::render('Rmd/git_presentation.Rmd', output_file = '../docs/index.html')"
 
       - name: Deploy 🚀
