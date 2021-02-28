@@ -1,18 +1,21 @@
 ---
-title: "Git good before you get got: practical version control"
+title: "Git"
 author: "Sean Browning"
-date: "September 27, 2018"
+date: "March 5th, 2021"
 output: ioslides_presentation
 ---
 
 <!-- Hey now, are you reading my source code? -->
+<style>
+.forceBreak { -webkit-column-break-after: always; break-after: column; }
+</style>
 
 ```{r setup, include=FALSE}
 library(knitr)
 opts_chunk$set(echo = FALSE)
 ```
 
-## Relevant xkcd  
+## The relevant xkcd comic    
 
 <div class="columns-2">
 
@@ -27,9 +30,9 @@ opts_chunk$set(echo = FALSE)
 
 ## A bit about this talk  
 
+- Revised from a 2018 RUG talk  
 - Targeting newcomers and git-exiles alike
 - Presented with a GUI, but framed with the underlying commands   
-- This is a work in progress (any suggestions)?
 - Feel free to contribute!
 
 ## Things we might gloss over a bit
@@ -43,19 +46,17 @@ The scope of Git far exceeds this short talk
 
 ## Why should we care?
 
-*Axiom:* Proficiency in collaborative tools breeds collaboration
+*Axiom:* Proficiency in collaborative tools drives collaboration
 
 - Collaborative science is better [science](https://github.com/buildingthefuture)  
-- All of your friends are already doing it  
-- One more tool in the toolbox
+- All of your friends (and collaborators) are already doing it  
+- It's not going away
 
 ## A bit about me
 
-- RUG Vice Chair
-- Native Texan
+- CDC/ATSDR RUG Chair
 - MSc. Epidemiology from London School of Hygiene and Tropical Medicine
-- No formal computer science or IT training  
-    - Learned Python, R, and C mostly online
+- Daily Git user
 
 ```{r my-photo, out.width = "275px"}
 include_graphics("../img/about_me.jpg")
@@ -74,6 +75,7 @@ include_graphics("../img/about_me.jpg")
 ## How many of you know the pain?  
 
 ```{r version-pic, out.width = "500px"}
+# TODO: New picture
 include_graphics("../img/insanity.png")
 ```
 
@@ -83,35 +85,30 @@ _Is this **good** version control?_
 
 ## Motivating problems  
 
-__Why is "track changes" _often_ insufficient?__
+__Why are ad-hoc approaches _often_ insufficient?__
 
-- No "master" record
-- "diffing" quickly becomes unwieldy for both user and software
-- Merging different "branches" often produces unwanted and non-deterministic side-effects  
+- Lack of standards leave collaborators confused  
+- When things go bad, they get _really_ bad  
+- Project "state" is ambiguous
 
 ```{r this_is_fine, out.width = "550px"}
 include_graphics("../img/fine.png")
 ```
 
-## Motivating problems  
-
-__Why is "track changes" _often_ insufficient? (continued)__
-
-- Only the state of a single file is maintained  
-- Concurrent editing not _impossible_, but not straightforward either  
-    - SharePoint, et al. solve this only to a point
-
 ## So what is Git?
 
-- Git is a distributed version control system (VCS)
-- Conceived by Linus Torvalds in 2005 (the "Linux guy")
-- Maintained by Junio Hamano thereafter (the "gitster")
+"[git] is a stupid (but extremely fast) directory content manager.  It
+doesn't do a whole lot, but what it _does_ do is track directory
+contents efficiently. " - Linus Torvalds  
+
+- Conceived by Linus Torvalds in 2005 (the "Linux guy")  
 
 <div class="columns-2">
-```{r git-lord-1, out.width="200px"}
+```{r git-lord-1, out.width="250px"}
 include_graphics("../img/linus.jpg")
-include_graphics("../img/hamano.jpg")
 ```
+
+<p class="forceBreak"></p>
 
 ```{r git-logo, out.width="250px"}
 include_graphics("../img/dvc.png")
@@ -127,9 +124,9 @@ Read Torvalds own description of it here: https://github.com/git/git/blob/e83c51
 Git is a tool for tracking the state of your project
 
 - Maintain a detailed revision history
-- Revert all files to any prior state  
+- View tracked files at any prior state  
 - Create separate branches without affecting the "master" branch
-- Merge branches in a sensible and predictable way
+- Merge changes in a sensible and predictable way
 
 <div class="centered">
 
@@ -139,24 +136,6 @@ include_graphics("../img/snapshot.jpg")
 
 </div>
 
-## Why Git?
-
-One of the main reasons for Git's success is due to the original task being almost the worst case scenario:
-
-<div class="columns-2">
-
-- 15 million+ lines of code to track
-- 10,000+ contributors
-- Had to be fast, lightweight
-- Had to work across time zones, locales
-
-
-```{r linux, out.width = "180px"}
-include_graphics("../img/linux.png")
-```
-</div>
-
-
 # How to Git it  
 
 ## Git clients currently allowed by ITSO | Git for Windows  
@@ -165,36 +144,46 @@ include_graphics("../img/linux.png")
 - Command line daunting for the casual user
 - Default commit message editor is Vim (which is _really_ daunting to the casual user)
 
-```{r git-native, out.width = "300px"}
+<div class="columns-2">
+
+```{r git-native-1, out.width = "300px"}
 include_graphics("../img/git_cli.png")
+```
+<p class="forceBreak"></p>
+```{r git-native-2, out.width = "300px"}
 include_graphics("../img/git_for_win.png")
 ```
+</div>
 
-## Git clients currently allowed by ITSO | RStudio  
+## Git clients currently allowed by CDC | RStudio  
 
-- Self-contained, works well with project framework
+- It's always been there!
+- Nice that it's all in one place  
 - Somewhat limited with regards to more advanced operations  
 
 
 <div class="columns-2">
 
-```{r rstudio, out.width = "350px"}
+```{r rstudio-1, out.width = "350px"}
 include_graphics("../img/rstudio_1.png")
+```
+<p class="forceBreak"></p>
+```{r rstudio-2, out.width = "350px"}
 include_graphics("../img/rstudio_2.png")
 ```
 
 </div>
 
-## Git clients currently allowed by ITSO | GitKraken & Sourcetree
+## Git clients currently allowed by ITSO | Github Desktop
 
-- Both have detailed graphical interfaces for all git operations  
+- Serves as a "point-and-click" interface for Git operations
 - Easily manage a large number of repositories from one app  
-- _I will be using GitKraken to demonstrate a GUI interface_  
+- _I will be using Github Desktop to demonstrate a GUI interface_  
 
 <div class="centering">
 
-```{r kraken, out.width = "500px"}
-include_graphics("../img/kraken.gif")
+```{r gh_desktop, out.width = "500px"}
+include_graphics("https://cloud.githubusercontent.com/assets/359239/26094502/a1f56d02-3a5d-11e7-8799-23c7ba5e5106.png")
 ```  
 
 </div>
