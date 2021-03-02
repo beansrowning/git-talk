@@ -39,17 +39,16 @@ opts_chunk$set(echo = FALSE)
 
 The scope of Git far exceeds this short talk
 
-- How to exit Vim
-- Specific CLI arguments  
 - Cherry-picking, rebasing
-- submodules, CI/CD, etc.
+- submodules, CI/CD, Merge requests
+- How to exit Vim
 
 ## Why should we care?
 
 *Axiom:* Proficiency in collaborative tools drives collaboration
 
 - Collaborative science is better [science](https://github.com/buildingthefuture)  
-- All of your friends (and collaborators) are already doing it  
+- All of your friends (and collaborators) are already using it  
 - It's not going away
 
 ## A bit about me
@@ -124,8 +123,8 @@ Git is a tool for tracking the state of your project
 
 - Maintain a detailed revision history
 - View tracked files at any prior state  
-- Create separate branches without affecting the "master" branch
-- Merge changes in a sensible and predictable way
+- Create separate "parallel universes" seamlessly  
+- Merge changes in a sensible and predictable way 
 
 <div class="centered">
 
@@ -156,10 +155,9 @@ include_graphics("../img/git_for_win.png")
 
 ## Git clients currently allowed by CDC | RStudio  
 
-- It's always been there!
-- Nice that it's all in one place  
-- Somewhat limited with regards to more advanced operations  
-
+- Yep! It's always been there!
+- Code and manage Git from one program  
+- UI is on the basic side  
 
 <div class="columns-2">
 
@@ -198,10 +196,10 @@ include_graphics("https://code.visualstudio.com/assets/docs/editor/versioncontro
 
 <p class="forceBreak"></p>
 
-- Atom (created by GitHub)
+- Sourcetree
 
-```{r atom, out.width = "400px"}
-include_graphics("../img/atom.jpg")
+```{r sourcetree, out.width = "400px"}
+include_graphics("https://www.sourcetreeapp.com/dam/jcr:580c367b-c240-453d-aa18-c7ced44324f9/hero-mac-screenshot.png")
 ```
 
 </div>
@@ -227,7 +225,7 @@ Don't focus on the command names themselves, but the actions they perform
 
 _(We will not be using command line here)_
 
-```{r hackerman, out.width = "200px"}
+```{r hackerman, out.width = "400px"}
 include_graphics("../img/hackerman.png")
 ```
 
@@ -238,8 +236,10 @@ include_graphics("../img/hackerman.png")
 - Not every file present in your project folder has to be tracked in the repo  
 
 ```{r init, out.width = "500px"}
-include_graphics("../img/kraken_init.png")
+include_graphics("../img/gh_init.png")
 ```
+
+# Creating your repo in Github Desktop  
 
 ## View file status | git status
 
@@ -269,7 +269,7 @@ To begin tracking a file, we use the `git add` command.
 ```{r git-add, out.width = "350px"}
 include_graphics("../img/add_before.png")
 include_graphics("../img/add_after.png")
-```  
+```
 
 ## Recording your changes | git commit
 
@@ -292,18 +292,23 @@ include_graphics("../img/commit.png")
 - Base operation the same as deleting file and then staging the changes  
 - Removes the files from the current index (and all future commits)
 
-## Be mindful of what you track  
+## Be mindful of what you track!  
 
-While tracked files can be "deleted" at a later time, any commits made before the file was deleted remain accessible.
+```{r deploy_key, out.width = "800px"}
+include_graphics("../img/deploy_key.png")
+```
 
+## Be mindful of what you track!  
+
+With very little exceptions, everything tracked within Git can be recovered.  
+
+- In a "parallel universe", you never deleted that data file  
 - Begin thinking about this *before* you make a commit
 - Be especially careful of PII, passwords, private keys, etc.
-- When in doubt, assume your data is visible by all
-- Consider summarizing data if it *should* be tracked
 
-## How to "ignore" files
+## "ignoring" files | or: practicing mindfulness  
 
-With a `.gitignore` file in your repo, you can specify explicitly what files you want to remain untracked.  
+With a `.gitignore` file in your repo, you can specify explicitly what files or folders you want to remain un-tracked.  
 
 - This is simply a file in your root folder
 - [Templates](https://github.com/github/gitignore) are available online for many languages and project types
@@ -312,13 +317,13 @@ With a `.gitignore` file in your repo, you can specify explicitly what files you
 include_graphics("../img/ignore.png")
 ```
 
-# Seeing it in action  
+# Seeing it in action
 
 ## Demonstration  
 
 Let's see how all of these commands work for a simple task:  
 
-- Initialize a new repository in GitKraken  
+- Initialize a new repository in GitHub Desktop 
 - Create and commit a simple script from RStudio  
 - Create an commit a `.gitignore` file  
 - Remove an unwanted file from the repository  
@@ -328,12 +333,12 @@ Here we will create a new repository
 </div>
 
 
-## Let's git branching  
+## Enter the multiverse | branching
 
 A branch allows you to diverge from the main track while keeping the state of the main track intact.  
 
-- A branch inherits its history from whichever branch it was forked off of  
-- Easily merge back in changes you made in the branch (even if the main branch continues to develop independently)
+- A branch inherits its history from its parent
+- Easily merge back in changes you made in the branch (even if the parent continues to develop independently)  
 - One of the most powerful features of Git  
 
 <div class="centering">
@@ -348,16 +353,13 @@ include_graphics("../img/branch.png")
 
 `git branch` creates a new branch off of the current one
 
-<div class="columns-2">
-
-- If you're just starting out, the current branch is likely *master*  
-- See a list of all available branches with `git branch -a`
+- If you're just starting out, the current branch is likely *master* or *main*    
 - [Visualize](http://git-school.github.io/visualizing-git/) it yourself
 
-```{r branches, out.width = "200px"}
+```{r branches, out.width = "400px"}
 include_graphics("../img/branches.png")
 ```
-</div>
+
 
 ## Switching branches | git checkout  
 
@@ -365,15 +367,15 @@ include_graphics("../img/branches.png")
 
 - The same function is used to "checkout" a previous commit  
 - Checking out a previous commit will detach your "HEAD"  
-- Also used to "un-stage" a file (ie. staged -> modified)
+- Also used to "un-modify" a file (ie. modified -> unmodified)
     - `git checkout -- <file>`
+    - **This effectively erases your unsaved progress!**  
 
 ## Merging branches | git merge  
 
 `git merge` is used to merge a distant branch into the current one.
 
-- GitKraken provides a drag-and-drop mechanism for merging  
-- Merging does not delete the branch being merged in  
+- Merging does not automatically delete the branch being merged in  
     - The history of the distant branch is also added to the current branch  
 - Most of the merges locally will be "fast-forward" merges
 
@@ -396,7 +398,7 @@ visualization tool to test these concepts: http://git-school.github.io/visualizi
 
 If you (or your team) develops on more than one branch concurrently, you may run into merge conflicts.  
 
-- If the same line is edited differently across branches, Git will not know what one takes precedence   
+- If the same line is edited across branches, Git will not know what one takes precedence in a merge
 - Several merge [strategies](https://git-scm.com/docs/git-merge) exist to automate this  
 - For small merges it's often easier to workup manually  
 
@@ -410,36 +412,18 @@ Git will provide indicators in any files containing merge conflicts indicating w
 
 ```
 <<<<<<< <current_branch>
-... (lines from your branch)
+I'm not a cat
 =======
-... (lines from branch being merged in)
+I'm not a lawyer
 >>>>>>> <branch_being_merged>
 ```
 
-- Correct the document as you want it to appear and stage the changes to fix the conflict  
+- Fix the document as you want it to appear and stage the changes
+- Sometimes it's not an A/B problem and will require revision  
 
 Let's demonstrate...  
 
-## Takeaways
-
-There are many workable models for how best to use these commands
-
-My advice:  
-
-<div class="columns-2">
-
-- Commit often, grouping changes logically  
-- Branch earlier rather than later  
-- Make your commit messages *descriptive*
-
-```{r messages, out.width = "150px"}
-include_graphics("../img/messages.jpg")
-```
-
-</div>
-
-# Part 3. Using Git with all your friends  
-
+# Part 2. Using Git with all your friends  
 
 # Almost there!
 
@@ -448,7 +432,7 @@ include_graphics("../img/messages.jpg")
 When using GitLab or GitHub, you can start your repository directly from the website  
 
 - You can also create a blank repository and push a repo you've already created locally  
-- Projects can be housed under either a user or group namespace (like RUG or NST)
+- Projects can be housed under either a user or group namespace  
 - Optionally set visibility (just _how_ collaborative do you want to be?)
 
 __Let's take a look...__  
@@ -469,7 +453,6 @@ I think fundamentally fetch is the safer and better option for most projects, bu
 
 Those that do notice will discover the difference eventually, and it avoids having to teach it here in such a short time slot.
 
-
 For the astute among you who read this:
 
 git fetch pulls refs and objects from the remote, but does not merge them in.
@@ -485,13 +468,13 @@ include_graphics("../img/git-transport.png")
 
 credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
 
-## Cloning a pre-established repository | git clone  
+## Cloning an existing repository | git clone  
 
 `git clone` creates a local copy of a remote repository  
 
 - You Only Clone Once (YOCO)
 - By default, the directory will be named after the title of the repository  
-- It is not possible to "clone" bits and pieces of a larger repository  
+- **It is not possible to "clone" bits and pieces of a larger repository**   
 
 ```{r clones, out.width = "450px"}
 include_graphics("../img/agent_clone.jpg")
@@ -514,7 +497,7 @@ Finally, we send our updates to the remote repository using `git push`
 
 ```{r push, out.width = "450px"}
 include_graphics("../img/push.jpg")
-```  
+```
 
 # Demonstration
 
@@ -524,11 +507,39 @@ Communication with internal gitlab servers is secure and requires you to generat
 
 - if you have puTTY, you can use puTTYgen to create the key  
 - If you have Git installed, just follow the instructions [here](https://git.biotech.cdc.gov/help/ssh/README#generating-a-new-ssh-key-pair)
-- If you can't get it sorted, ask one of us for help!
+- If you can't get it sorted, shoot me an email!  
 
 ```{r ssh, out.width = "500px"}
 include_graphics("../img/ssh_key.png")
 ```
+
+# Takeaways
+
+## Takeaways
+
+There are many workable models for how best to use these commands
+
+```{r, out.width = "500px"}
+include_graphics("https://i2.wp.com/lanziani.com/slides/gitflow/images/gitflow_1.png")
+```
+
+## Takeaways
+
+My advice:  
+
+<div class="columns-2">
+
+- Commit often, grouping changes logically  
+- Branch earlier rather than later  
+- Make your commit messages *descriptive*
+
+<p class="forceBreak"></p>
+
+```{r messages, out.width = "250px"}
+include_graphics("../img/messages.jpg")
+```
+
+</div>
 
 ## There's a lot more here to talk about  
 
@@ -538,17 +549,16 @@ We will stop here for the sake of time and to avoid overload
 
 ```{r stop, out.width = "500px"}
 include_graphics("../img/stop.gif")
-```  
+```
 
 ## Getting help
 
 As mentioned before there is *way* more here to explore, and I hope you will!
 
-- These slides are available on [GitLab](http://git.biotech.cdc.gov/oet5/git_talk)  
-- Questions? Send them my/our way.  
+- These slides (and the Rmd source) are available on [GitHub](https://github.com/beansrowning/git-talk)  
 - Ready for a deeper dive? Check out the [book](https://git-scm.com/book/en/v2)
 
-```{r help, out.width = "450px"}
+```{r help, out.width = "500px"}
 include_graphics("../img/help.gif")
 ```
 
