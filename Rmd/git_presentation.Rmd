@@ -2,7 +2,9 @@
 title: "Git"
 author: "Sean Browning"
 date: "March 5th, 2021"
-output: ioslides_presentation
+output: 
+    ioslides_presentation:
+        widescreen: true
 ---
 
 <!-- Hey now, are you reading my source code? -->
@@ -54,7 +56,7 @@ The scope of Git far exceeds this short talk
 ## A bit about me
 
 - CDC/ATSDR RUG Chair
-- MSc. Epidemiology from London School of Hygiene and Tropical Medicine
+- MSc. Epidemiology from LSHTM
 - Daily Git user
 
 ```{r my-photo, out.width = "275px"}
@@ -563,116 +565,3 @@ include_graphics("../img/help.gif")
 ```
 
 # Thanks!
-
-# Extras
-
-# Part 1. Project workflows
-
-## We've only seen the tip of the iceberg so far  
-
-```{r beyond, out.width = "500px"}
-include_graphics("../img/beyond.jpg")
-```
-
-
-## Visual Diffing and blaming  
-
-Easily view when changes were made and by whom  
-
-- Start discussions on a particular commit or line of code  
-- See exactly which commits produced what changes  
-- Realize how often you yourself the source of the issue
-
-```{r blame, out.width = "500px"}
-include_graphics("../img/blame.jpg")
-```
-
-## Issue tracking  
-
-GitLab and GitHub offer a fully featured issue and project tracking system that integrates directly with Git.  
-
-- Create issues and track discussion on GitLab  
-- Reference issues or people in your commit messages
-    - Automatically close issues or ping people when you push a commit
-- Estimate and track time spent
-
-```{r issue-tracking, out.width = "500px"}
-include_graphics("../img/kanban.png")
-```
-
-## Merge requests (Pull Requests)
-
-For complicated and involved merges, discuss and collaborate with partners before you merge  
-
-- All commits to the branch being merged aggregate on a single page  
-- Show a summary of all files that will be affected  
-- History and discussion retained after the merge is completed  
-
-
-## Snippets (Gists)
-
-Quickly create one-off scripts and hacks you can share and continue to edit  
-
-- Declutter your directories full of small R scripts  
-- Keep your secrets private, or share broadly  
-- Create how-tos (some of you may have used [mine](https://git.biotech.cdc.gov/snippets/58))
-
-## ..and many, many more
-
-## Where are all of my friends?
-
-There are both internal and external options for hosting repositories
-
-- GitLab (at least 2 internally, external as well)
-- GitHub (externally facing)
-- Bitbucket (external, owned by Atlassian)
-
-```{r providers, out.width = "200px"}
-include_graphics("../img/gitlab.png")
-include_graphics("../img/github.jpg")
-include_graphics("../img/bitbucket.jpg")
-```
-
-## GitLab inside the CDC  
-
-Two Options (probably others):  
-
-- [git.cdc.gov](http://git.cdc.gov)
-- [git.biotech.cdc.gov](http://git.biotech.cdc.gov)
-
-_I am partial to the latter because all my stuff is there already_
-
-```{r gitlab-logo, out.width = "200x"}
-include_graphics("../img/gitlab.png")
-```
-
-## Gitting access to CDC Gitlab
-
-You can do so now just by using your windows credentials using the LDAP tab!
-
-```{r cdc_gitlab, out.width = "600px"}
-include_graphics("../img/cdc_gitlab.png")
-```
-
-## Gitting access to SciComp Gitlab
-
-Access to git.biotech.cdc.gov also uses your windows credentials, but you must request access   
-
-- email support@mail.biotech.cdc.gov and ask for an account
-- Site is almost the exact same (though more NCEZID projects are likely housed here)  
-
-<div class="notes">
-Here we will go on and show to make a new repository from GitLab from scratch
-</div>
-
-## Options for using external sites  
-
-CDC has an organization on GitHub where you can post projects externally  
-
-- If you're curious, see guidance [here](http://it-guides.cdc.gov/source-code/howtoOpenSource/)  
-- Also a cool global GitHub for Government group  
-- Many similarities to GitLab  
-
-```{r cdc_hub, out.width = "650px"}
-include_graphics("../img/cdc_github.png")
-```
