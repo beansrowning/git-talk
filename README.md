@@ -1,6 +1,6 @@
-# Intro to version control with Git  
-## September 27th, 2018  
+# Intro to version control with Git   
 *Sean Browning*  
+March 5th, 2021  
 
 ## Okay, how do I see this thing?
 
