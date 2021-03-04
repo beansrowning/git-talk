@@ -1,5 +1,5 @@
 ---
-title: "Git"
+title: "Git: a Primer"
 author: "Sean Browning"
 date: "March 5th, 2021"
 output: 
@@ -257,6 +257,14 @@ It's a difficult thing, isn't it? The task is to teach Git without really going 
 I'd like to start by building familiarity with the concepts. From there, hopefully it becomes a bit easier to talk about things.
 </div>
 
+## Dataflow visualized
+
+```{r git-transport-2, out.width = "500px"}
+include_graphics("../img/git-transport.png")
+```
+
+credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
+
 ## Create a repository | git init
 
 - `git init` creates an empty repository to begin tracking your files  
@@ -395,10 +403,9 @@ include_graphics("../img/branches.png")
 `git checkout` is used to switch between branches and a few more things:  
 
 - The same function is used to "checkout" a previous commit  
-- Checking out a previous commit will detach your "HEAD"  
 - Also used to "un-modify" a file (ie. modified -> unmodified)
     - `git checkout -- <file>`
-    - **This effectively erases your unsaved progress!**  
+    - **This effectively erases any unstaged progress!**  
 
 ## Merging branches | git merge  
 
@@ -428,7 +435,7 @@ visualization tool to test these concepts: http://git-school.github.io/visualizi
 If you (or your team) develops on more than one branch concurrently, you may run into merge conflicts.  
 
 - If the same line is edited across branches, Git will not know what one takes precedence in a merge
-- Several merge [strategies](https://git-scm.com/docs/git-merge) exist to automate this  
+- Several merge [strategies](https://git-scm.com/docs/git-merge#_merge_strategies) exist to automate this  
 - For small merges it's often easier to workup manually  
 
 ```{r conflit, out.width = "500px"}
@@ -489,7 +496,7 @@ git pull performs a fetch and then attempts to merge them
 
 </div>
 
-## Dataflow visualized  
+## Recall our Dataflow
 
 ```{r git-transport, out.width = "500px"}
 include_graphics("../img/git-transport.png")
