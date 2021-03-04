@@ -45,13 +45,21 @@ The scope of Git far exceeds this short talk
 - submodules, CI/CD, Merge requests
 - How to exit Vim
 
+```{r exit-vim}
+include_graphics("../img/vim.png")
+```
+
 ## Why should we care?
 
-*Axiom:* Proficiency in collaborative tools drives collaboration
+*Axiom:* Proficiency in collaborative tools drives innovation
 
-- Collaborative science is better [science](https://github.com/buildingthefuture)  
-- All of your friends (and collaborators) are already using it  
+- All of your friends (and collaborators) are already using it
+- It's not enough to merely know that the tools exist if we can't apply them practically
 - It's not going away
+
+<div class="notes">
+Consider: Some of the first case counts of COVID-19 in China we were getting from GitHub.
+</div>
 
 ## A bit about me
 
@@ -66,11 +74,21 @@ include_graphics("../img/about_me.jpg")
 ## Agenda  
 
 0. What is version control?
-2. Using Git locally (a crash-course in Git)
-3. Using Git with all your friends (remotes, Gitlab, and GitHub)
-
+1. Using Git locally (a crash-course in Git)
+2. Using Git with all your friends (remotes and how to talk to them)
 
 # Part 0. What is version control | and what is "Git"
+
+## Quick note on jargon
+
+Technobabble is the name of the game here, but here's a rough guide to interpret Git-speak:
+
+> - Git : "The free computer program you're about to learn about"
+> - GitHub/GitLab : "Two websites (remotes) where you can store repositories"
+> - Repo : "short for repository, a folder that is tracked with version control"
+> - Remote : "A (remote) server that houses a copy of your repo"
+> - Commit : "Read: take a snapshot in time, or record present state"
+> - Branch / Fork : "Read: creating a parallel universe"
 
 ## How many of you know the pain?  
 
@@ -223,7 +241,9 @@ include_graphics("https://git-scm.com/book/en/v2/images/lifecycle.png")
 
 ## Local Git commands 
 
-Don't focus on the command names themselves, but the actions they perform  
+I'll present each Git operation with it's command line name.
+
+Focus on the association of the name to its respective operation, but don't worry about memorizing them!  
 
 _(We will not be using command line here)_
 
@@ -231,7 +251,13 @@ _(We will not be using command line here)_
 include_graphics("../img/hackerman.png")
 ```
 
-## Begin a repository | git init
+<div class="notes">
+It's a difficult thing, isn't it? The task is to teach Git without really going to the command line at all.
+
+I'd like to start by building familiarity with the concepts. From there, hopefully it becomes a bit easier to talk about things.
+</div>
+
+## Create a repository | git init
 
 - `git init` creates an empty repository to begin tracking your files  
 - Ideally you would create a repository at the start, but you can do so at any time  
@@ -241,7 +267,6 @@ include_graphics("../img/hackerman.png")
 include_graphics("../img/gh_init.png")
 ```
 
-# Creating your repo in Github Desktop  
 
 ## View file status | git status
 
@@ -265,11 +290,13 @@ include_graphics("../img/file_status.png")
 
 To begin tracking a file, we use the `git add` command.
 
-- Files added are "staged", but not yet committed
-- Also use this command to stage changes of modified files
+- Files added are "staged", but we haven't fully "saved" or "committed"
+- We can also use this command to stage changes of modified files
 
-```{r git-add, out.width = "350px"}
+```{r git-add, out.width = "450px"}
 include_graphics("../img/add_before.png")
+```
+```{r git-add-2, out.width = "500px"}
 include_graphics("../img/add_after.png")
 ```
 
@@ -302,7 +329,7 @@ include_graphics("../img/deploy_key.png")
 
 ## Be mindful of what you track!  
 
-With very little exceptions, everything tracked within Git can be recovered.  
+With very few exceptions, everything tracked within Git can be recovered.  
 
 - In a "parallel universe", you never deleted that data file  
 - Begin thinking about this *before* you make a commit
