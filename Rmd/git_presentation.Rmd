@@ -27,58 +27,6 @@ opts_chunk$set(echo = FALSE)
 
 </div>
 
-# Preface  
-
-
-## A bit about this talk  
-
-- Revised from a 2018 RUG talk  
-- Targeting newcomers and git-exiles alike
-- Presented with a GUI, but framed with the underlying commands   
-- Feel free to contribute!
-
-## Things we might gloss over a bit
-
-The scope of Git far exceeds this short talk
-
-- Cherry-picking, rebasing
-- submodules, CI/CD, Merge requests
-- How to exit Vim
-
-```{r exit-vim}
-include_graphics("../img/vim.png")
-```
-
-## Why should we care?
-
-*Axiom:* Proficiency in collaborative tools drives innovation
-
-- All of your friends (and collaborators) are already using it
-- It's not enough to merely know that the tools exist if we can't apply them practically
-- It's not going away
-
-<div class="notes">
-Consider: Some of the first case counts of COVID-19 in China we were getting from GitHub.
-</div>
-
-## A bit about me
-
-- CDC/ATSDR RUG Chair
-- MSc. Epidemiology from LSHTM
-- Daily Git user
-
-```{r my-photo, out.width = "275px"}
-include_graphics("../img/about_me.jpg")
-```
-
-## Agenda  
-
-0. What is version control?
-1. Using Git locally (a crash-course in Git)
-2. Using Git with all your friends (remotes and how to talk to them)
-
-# Part 0. What is version control | and what is "Git"
-
 ## Quick note on jargon
 
 Technobabble is the name of the game here, but here's a rough guide to interpret Git-speak:
@@ -89,6 +37,14 @@ Technobabble is the name of the game here, but here's a rough guide to interpret
 > - Remote : "A (remote) server that houses a copy of your repo"
 > - Commit : "Read: take a snapshot in time, or record present state"
 > - Branch / Fork : "Read: creating a parallel universe"
+
+## Agenda  
+
+0. What is version control?
+1. Using Git locally (a crash-course in Git)
+2. Using Git with all your friends (remotes and how to talk to them)
+
+# Part 0. What is version control | and what is "Git"
 
 ## How many of you know the pain?  
 
@@ -312,7 +268,7 @@ include_graphics("../img/add_after.png")
 
 `git commit` creates a record of all tracked files.  
 
-Three core parts:
+Message has three core parts:
 
 - Commit message (_"Made implicitly missing data explicit"_)
 - Commit author (me)  
@@ -536,18 +492,6 @@ include_graphics("../img/push.jpg")
 ```
 
 # Demonstration
-
-## A note on SSH keys
-
-Communication with internal gitlab servers is secure and requires you to generate a SSH key for your account.
-
-- if you have puTTY, you can use puTTYgen to create the key  
-- If you have Git installed, just follow the instructions [here](https://git.biotech.cdc.gov/help/ssh/README#generating-a-new-ssh-key-pair)
-- If you can't get it sorted, shoot me an email!  
-
-```{r ssh, out.width = "500px"}
-include_graphics("../img/ssh_key.png")
-```
 
 # Takeaways
 
