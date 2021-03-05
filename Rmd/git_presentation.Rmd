@@ -496,7 +496,7 @@ include_graphics("../img/stop.gif")
 
 ## Getting help
 
-As mentioned before there is *way* more here to explore, and I hope you will!
+I hope you'll continue to explore!
 
 - These slides (and the Rmd source) are available on [GitHub](https://github.com/beansrowning/git-talk)  
 - Ready for a deeper dive? Check out the [book](https://git-scm.com/book/en/v2)
