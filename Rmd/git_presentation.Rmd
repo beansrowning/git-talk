@@ -112,7 +112,7 @@ include_graphics("../img/snapshot.jpg")
 
 # How to Git it  
 
-## Git clients currently allowed by CDC | Git for Windows  
+## Gitting set up | Git for Windows  
 
 - __Required regardless of what interface you use__
 - Command line daunting for the casual user
@@ -129,25 +129,7 @@ include_graphics("../img/git_for_win.png")
 ```
 </div>
 
-## Git clients currently allowed by CDC | RStudio  
-
-- Yep! It's always been there!
-- Code and manage Git from one program  
-- UI is on the basic side  
-
-<div class="columns-2">
-
-```{r rstudio-1, out.width = "350px"}
-include_graphics("../img/rstudio_1.png")
-```
-<p class="forceBreak"></p>
-```{r rstudio-2, out.width = "350px"}
-include_graphics("../img/rstudio_2.png")
-```
-
-</div>
-
-## Git clients currently allowed by CDC | Github Desktop
+## Gitting set up | Github Desktop
 
 - Serves as a "point-and-click" interface for Git operations
 - Easily manage a large number of repositories from one app  
@@ -157,25 +139,6 @@ include_graphics("../img/rstudio_2.png")
 
 ```{r gh_desktop, out.width = "500px"}
 include_graphics("https://cloud.githubusercontent.com/assets/359239/26094502/a1f56d02-3a5d-11e7-8799-23c7ba5e5106.png")
-```
-
-</div>
-
-## Honorable mentions
-
-<div class="columns-2">
-- Visual Studio Code
-
-```{r vscode, out.width = "400px"}
-include_graphics("https://code.visualstudio.com/assets/docs/editor/versioncontrol/merge-conflict.png")
-```
-
-<p class="forceBreak"></p>
-
-- Sourcetree
-
-```{r sourcetree, out.width = "400px"}
-include_graphics("https://www.sourcetreeapp.com/dam/jcr:580c367b-c240-453d-aa18-c7ced44324f9/hero-mac-screenshot.png")
 ```
 
 </div>
@@ -231,7 +194,6 @@ credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
 include_graphics("../img/gh_init.png")
 ```
 
-
 ## View file status | git status
 
 `git status` displays the current state of files in your project
@@ -244,7 +206,7 @@ With Git there are four "states" that your files can reside in:
 - Modified
 - Staged  
 
-```{r file-stages, out.width = "375px"}
+```{r file-stages, out.width = "450px"}
 include_graphics("../img/file_status.png")
 ```
 
@@ -252,10 +214,10 @@ include_graphics("../img/file_status.png")
 
 ## Tracking your files | git add
 
-To begin tracking a file, we use the `git add` command.
+To add a file to your repository, we use the `git add` command.
 
-- Files added are "staged", but we haven't fully "saved" or "committed"
 - We can also use this command to stage changes of modified files
+- Files added are "staged", but we haven't fully "saved" or "committed"
 
 ```{r git-add, out.width = "450px"}
 include_graphics("../img/add_before.png")
@@ -266,9 +228,9 @@ include_graphics("../img/add_after.png")
 
 ## Recording your changes | git commit
 
-`git commit` creates a record of all tracked files.  
+`git commit` creates a record of all tracked files that you've staged.
 
-Message has three core parts:
+Produces a message with three core parts:
 
 - Commit message (_"Made implicitly missing data explicit"_)
 - Commit author (me)  
@@ -326,13 +288,14 @@ Here we will create a new repository
 </div>
 
 
-## Enter the multiverse | branching
+## Enter: Branching
+
+Changes don't have to be linear!
 
 A branch allows you to diverge from the main track while keeping the state of the main track intact.  
 
 - A branch inherits its history from its parent
 - Easily merge back in changes you made in the branch (even if the parent continues to develop independently)  
-- One of the most powerful features of Git  
 
 <div class="centering">
 
