@@ -250,7 +250,7 @@ include_graphics("../img/commit.png")
 ## Be mindful of what you track!  
 
 ```{r deploy_key, out.width = "800px"}
-include_graphics("../img/deploy_key.png")
+include_graphics("../img/deploy_key.PNG")
 ```
 
 ## Be mindful of what you track!  
