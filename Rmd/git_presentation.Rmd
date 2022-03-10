@@ -1,7 +1,7 @@
 ---
 title: "Git: a Primer"
 author: "Sean Browning"
-date: "March 5th, 2021"
+date: "March 18th, 2022"
 output: 
     ioslides_presentation:
         widescreen: true
@@ -104,7 +104,7 @@ Git is a tool for tracking the state of your project
 
 <div class="centered">
 
-```{r snapshot, out.width = "400px"}
+```{r snapshot, out.width = "350px"}
 include_graphics("../img/snapshot.jpg")
 ```
 
@@ -168,7 +168,7 @@ Focus on the association of the name to its respective operation, but don't worr
 
 _(We will not be using command line here)_
 
-```{r hackerman, out.width = "400px"}
+```{r hackerman, out.width = "300px"}
 include_graphics("../img/hackerman.png")
 ```
 
@@ -184,55 +184,53 @@ I'd like to start by building familiarity with the concepts. From there, hopeful
 - Ideally you would create a repository at the start, but you can do so at any time  
 - Not every file present in your project folder has to be tracked in the repo  
 
-```{r init, out.width = "500px"}
+<div class="columns-2">
+
+```{r init, out.width = "400px"}
 include_graphics("../img/gh_init.png")
 ```
 
-## View file status | git status
+<p class="forceBreak"></p>
 
-`git status` displays the current state of files in your project
+```{r init2, out.width = "250px"}
+include_graphics("../img/init.png")
+```
+
+
+</div>
+
+## View file status | git status/add
 
 <div class="columns-2">
-With Git there are four "states" that your files can reside in:  
+All unsaved changes to your repository will show up here  
 
-- Untracked  
-- Unmodified  
-- Modified
-- Staged  
+- Add changes to commit to history
+- Deselect any changes to ignore
+
+<p class="forceBreak"></p>
 
 ```{r file-stages, out.width = "450px"}
-include_graphics("../img/file_status.png")
+include_graphics("../img/status.png")
 ```
 
 </div>
 
-## Tracking your files | git add
-
-To add a file to your repository, we use the `git add` command.
-
-- We can also use this command to stage changes of modified files
-- Files added are "staged", but we haven't fully "saved" or "committed"
-
-```{r git-add, out.width = "450px"}
-include_graphics("../img/add_before.png")
-```
-```{r git-add-2, out.width = "500px"}
-include_graphics("../img/add_after.png")
-```
-
 ## Recording your changes | git commit
 
-`git commit` creates a record of all tracked files that you've staged.
+Label your changes!
 
-Produces a message with three core parts:
+<div class="columns-2">
 
-- Commit message (_"Made implicitly missing data explicit"_)
-- Commit author (me)  
-- SHA1 hash (unique to every commit, used to reference)
+- Make a succinct but useful title
+- Provide more details on what changes were made
+
+<p class="forceBreak"></p>
 
 ```{r commit, out.width = "500px"}
-include_graphics("../img/commit.png")
+include_graphics("../img/commit_gh.png")
 ```
+
+</div>
 
 ## Removing a file from the repo | git rm
 
@@ -280,7 +278,6 @@ Let's see how all of these commands work for a simple task:
 <div class="notes">
 Here we will create a new repository
 </div>
-
 
 ## Enter: Branching
 
