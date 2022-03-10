@@ -97,10 +97,10 @@ Read Torvalds own description of it here: https://github.com/git/git/blob/e83c51
 
 Git is a tool for tracking the state of your project
 
-- Maintain a detailed revision history
+- Maintain a detailed revision history of the files you want  
 - View tracked files at any prior state  
-- Create separate "parallel universes" seamlessly  
-- Merge changes in a sensible and predictable way 
+- Create and jump between many different versions 
+- Incorporate changes in a predictable (and reversible) way 
 
 <div class="centered">
 
@@ -115,8 +115,8 @@ include_graphics("../img/snapshot.jpg")
 ## Gitting set up | Git for Windows  
 
 - __Required regardless of what interface you use__
-- Command line daunting for the casual user
-- Default commit message editor is Vim (which is _really_ daunting to the casual user)
+- Mostly command line-based, also ships with lightweight GUI
+- _Interface can be daunting to the casual user_  
 
 <div class="columns-2">
 
@@ -135,23 +135,25 @@ include_graphics("../img/git_for_win.png")
 - Easily manage a large number of repositories from one app  
 - _I will be using Github Desktop to demonstrate a GUI interface_  
 
-<div class="centering">
+<div class="columns-2">
 
 ```{r gh_desktop, out.width = "500px"}
 include_graphics("https://cloud.githubusercontent.com/assets/359239/26094502/a1f56d02-3a5d-11e7-8799-23c7ba5e5106.png")
 ```
 
+```{r gh, out.width = "300px"}
+include_graphics("../img/github.jpg")
+```
 </div>
 
-# Part 1. Local Git commands | Let's git going  
+# Part 1. Using Git Locally | Let's git going  
 
-## Local Git commands  
+## Local Git Commands  
 
 Primary objectives:  
 
 - Start a new repository
 - Create and add files to it
-- Create and merge branches
 - Checkout previous revisions / other branches
 
 ```{r file-stages-1, out.width = "500px"}
@@ -176,15 +178,7 @@ It's a difficult thing, isn't it? The task is to teach Git without really going 
 I'd like to start by building familiarity with the concepts. From there, hopefully it becomes a bit easier to talk about things.
 </div>
 
-## Dataflow visualized
-
-```{r git-transport-2, out.width = "500px"}
-include_graphics("../img/git-transport.png")
-```
-
-credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
-
-## Create a repository | git init
+## Creating a new repository | git init
 
 - `git init` creates an empty repository to begin tracking your files  
 - Ideally you would create a repository at the start, but you can do so at any time  
