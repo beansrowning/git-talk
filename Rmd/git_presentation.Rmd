@@ -34,8 +34,8 @@ Technobabble is the name of the game here, but here's a rough guide to interpret
 > - Git : "The free computer program you're about to learn about"
 > - GitHub/GitLab : "Two websites (remotes) where you can store repositories"
 > - Repo : "short for repository, a folder that is tracked with version control"
-> - Remote : "A (remote) server that houses a copy of your repo"
-> - Commit : "Read: take a snapshot in time, or record present state"
+> - Remote : "A server that backs up your repo"
+> - Commit : "Read: recording the present project state"
 > - Branch / Fork : "Read: creating a parallel universe"
 
 ## Agenda  
@@ -59,11 +59,11 @@ _Is this **good** version control?_
 
 ## Motivating problems  
 
-__Why are ad-hoc approaches _often_ insufficient?__
+__Why are these ad-hoc approaches _often_ insufficient?__
 
 - Lack of standards leave collaborators confused  
 - When things go bad, they get _really_ bad  
-- Project "state" is ambiguous
+- Project state is ambiguous
 
 ```{r this_is_fine, out.width = "550px"}
 include_graphics("../img/fine.png")
@@ -73,9 +73,9 @@ include_graphics("../img/fine.png")
 
 "[git] is a stupid (but extremely fast) directory content manager.  It
 doesn't do a whole lot, but what it _does_ do is track directory
-contents efficiently. " - Linus Torvalds  
+contents efficiently." - Linus Torvalds  
 
-- Conceived by Linus Torvalds in 2005 (the "Linux guy")  
+- Linus Torvalds in 2005
 
 <div class="columns-2">
 ```{r git-lord-1, out.width="250px"}
