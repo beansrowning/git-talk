@@ -93,7 +93,7 @@ include_graphics("../img/dvc.png")
 Read Torvalds own description of it here: https://github.com/git/git/blob/e83c5163316f89bfbde7d9ab23ca2e25604af290/README
 </div>
 
-## Okay, but what _is_ it  
+## Okay, But What _Is_ It  
 
 Git is a tool for tracking the state of your project
 
@@ -109,7 +109,7 @@ include_graphics("../img/snapshot.jpg")
 
 </div>
 
-# How to Git it  
+# How To Git It  
 
 ## Gitting Set Up | Git for Windows  
 
@@ -128,7 +128,7 @@ include_graphics("../img/git_for_win.png")
 ```
 </div>
 
-## Gitting set up | Github Desktop
+## Gitting Set Up | Github Desktop
 
 - Serves as a "point-and-click" interface for Git operations
 - Easily manage a large number of repositories from one app  
@@ -159,17 +159,18 @@ Primary objectives:
 include_graphics("https://git-scm.com/book/en/v2/images/lifecycle.png")
 ```
 
-## Local Git commands 
+## Local Git Commands 
 
 _(We will not be using command line here)_
 
-We'll 
+- The lesson here won't fully translate to command line
+- Hopefully this serves as a starting place for most
 
 ```{r hackerman, out.width = "300px"}
 include_graphics("../img/hackerman.png")
 ```
 
-## Creating a new repository | git init
+## Creating A New Repository | git init
 
 - Ideally you would create a repository at the start, but you can do so at any time  
 - You don't (and probably shouldn't) track every file 
@@ -189,7 +190,7 @@ include_graphics("../img/init.png")
 
 </div>
 
-## View file status | git status/add
+## View File Status | git status/add
 
 <div class="columns-2">
 All unsaved changes to your repository will show up here  
@@ -205,7 +206,7 @@ include_graphics("../img/status.png")
 
 </div>
 
-## Recording your changes | git commit
+## Recording Your Changes | git commit
 
 Label your changes!
 
@@ -222,13 +223,13 @@ include_graphics("../img/commit_gh.png")
 
 </div>
 
-## Be mindful of what you commit!  
+## Be Mindful Of What You Commit!  
 
 ```{r deploy_key, out.width = "800px"}
 include_graphics("../img/deploy_key.PNG")
 ```
 
-## Be mindful of what you commit!  
+## Be Mindful Of What You Commit!  
 
 With very few exceptions, everything tracked within Git can be recovered.  
 
@@ -236,7 +237,7 @@ With very few exceptions, everything tracked within Git can be recovered.
 - Begin thinking about this *before* you add files  
 - Be especially careful of PII, passwords, private keys, etc.
 
-## "ignoring" files | Or: practicing mindfulness  
+## "Ignoring" Files | Or: Practicing Mindfulness  
 
 With a `.gitignore` file in your repo, you can specify explicitly what files or folders you want to remain un-tracked.  
 
@@ -247,7 +248,7 @@ With a `.gitignore` file in your repo, you can specify explicitly what files or 
 include_graphics("../img/ignore.png")
 ```
 
-# Seeing it in action
+# Seeing It In Action
 
 ## Demonstration  
 
@@ -279,7 +280,7 @@ include_graphics("../img/branch.png")
 
 </div>
 
-## Creating/switching branches | git branch
+## Creating/Switching Branches | git branch
 
 `git branch` creates a new branch off of the current one
 
@@ -290,7 +291,7 @@ include_graphics("../img/branch.png")
 include_graphics("../img/branches.png")
 ```
 
-## Merging branches | git merge  
+## Merging Branches | git merge  
 
 `git merge` is used to merge a distant branch into the current one.
 
@@ -298,9 +299,9 @@ include_graphics("../img/branches.png")
     - The history of the distant branch is also added to the current branch  
 - Most of the merges locally will be "fast-forward" merges
 
-# Let's take a look
+# Let's Take A Look
 
-## Working with branches  
+## Working With Branches  
 
 Looking back at the same repo we created earlier, let's try out these new commands:  
 
@@ -308,7 +309,7 @@ Looking back at the same repo we created earlier, let's try out these new comman
 - Make changes in our new branch and merge them into master  
 - Checkout a past commit  
 
-## Where merges git dicey  
+## Where Merges Git Dicey  
 
 If you (or your team) develops on more than one branch concurrently, you may run into merge conflicts.  
 
@@ -320,7 +321,7 @@ If you (or your team) develops on more than one branch concurrently, you may run
 include_graphics("../img/conflict.png")
 ```
 
-## Fixing a merge conflict
+## Fixing A Merge Conflict
 
 Git will provide indicators in any files containing merge conflicts indicating what lines deviate  
 
@@ -337,11 +338,11 @@ I'm not a lawyer
 
 Let's demonstrate...  
 
-# Part 2. Using Git with all your friends  
+# Part 2. Using Git With All Your Friends  
 
-# Almost there!
+# Almost There!
 
-## Starting a new project on GitHub
+## Starting A New Project On GitHub
 
 When using GitHub, you can start your repository directly from the website  
 
@@ -358,7 +359,7 @@ You have two main options here, depending on your project requirements:
 - CDCGov: Public-facing, externally visible
 - CDCEnt: Private projects, no external access
 
-## Interacting with remotes
+## Interacting With Remotes
 
 Now that we have a _remote_ repository set up, we need to introduce just three more git commands to interact with that repository:
 
@@ -366,30 +367,9 @@ Now that we have a _remote_ repository set up, we need to introduce just three m
 - git pull
 - git push
 
-<div class="notes">
-
-If you're reading this it's because you saw that I'm skipping fetch and died a little inside.
-
-I think fundamentally fetch is the safer and better option for most projects, but for small scale projects most will likely not notice the difference (especially if they're working alone).
-
-Those that do notice will discover the difference eventually, and it avoids having to teach it here in such a short time slot.
-
-For the astute among you who read this:
-
-git fetch pulls refs and objects from the remote, but does not merge them in.
-git pull performs a fetch and then attempts to merge them
-
-</div>
-
-## Recall our Dataflow
-
-```{r git-transport, out.width = "500px"}
-include_graphics("../img/git-transport.png")
-```
-
 credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
 
-## Cloning an existing repository | git clone  
+## Cloning An Existing Repository | git clone  
 
 `git clone` creates a local copy of a remote repository  
 
@@ -401,7 +381,7 @@ credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
 include_graphics("../img/agent_clone.jpg")
 ```
 
-## Gitting changes from remote | git pull  
+## Gitting Changes From Remote | git pull  
 
 `git pull` returns any updates from a remote repository and merges them locally  
 
@@ -409,7 +389,7 @@ include_graphics("../img/agent_clone.jpg")
 - `fetch` is safer because it does not attempt to merge automatically  
 - When in doubt, just look at the changes online  
 
-## Pushing your changes | git push  
+## Pushing Your Changes | git push  
 
 Finally, we send our updates to the remote repository using `git push`
 
@@ -450,7 +430,7 @@ include_graphics("../img/messages.jpg")
 
 </div>
 
-## There's a lot more here to talk about  
+## There's A Lot More To Talk About  
 
 Stashing, blaming, diffing, cherry-picking, rebasing
 
@@ -460,13 +440,13 @@ We will stop here for the sake of time and to avoid overload
 include_graphics("../img/stop.gif")
 ```
 
-## Getting help
+## Getting Help
 
 I hope you'll continue to explore!
 
 - These slides (and the Rmd source) are available on [GitHub](https://github.com/beansrowning/git-talk)  
 - Ready for a deeper dive? Check out the [book](https://git-scm.com/book/en/v2)
-- Working on the command line? Try this Katakoda course.
+- Working on the command line? Try this [Katacoda course](https://www.katacoda.com/courses/git).
 
 ```{r help, out.width = "500px"}
 include_graphics("../img/help.gif")
