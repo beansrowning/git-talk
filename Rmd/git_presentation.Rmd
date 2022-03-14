@@ -130,9 +130,9 @@ include_graphics("../img/git_for_win.png")
 
 ## Gitting Set Up | Github Desktop
 
-- Serves as a "point-and-click" interface for Git operations
+- Serves as a "point-and-click" interface for most Git operations
 - Easily manage a large number of repositories from one app  
-- _I will be using Github Desktop to demonstrate a GUI interface_  
+- _I will be using Github Desktop for this talk_  
 
 <div class="columns-2">
 
@@ -153,7 +153,7 @@ Primary objectives:
 
 - Start a new repository
 - Create and add files to it
-- Checkout previous revisions / other branches
+- View previous revisions / other branches
 
 ```{r file-stages-1, out.width = "500px"}
 include_graphics("https://git-scm.com/book/en/v2/images/lifecycle.png")
@@ -172,8 +172,9 @@ include_graphics("../img/hackerman.png")
 
 ## Creating A New Repository | git init
 
+- Create a new project folder, or select and existing one
 - Ideally you would create a repository at the start, but you can do so at any time  
-- You don't (and probably shouldn't) track every file 
+- You don't have to (and probably shouldn't) track every file 
 
 <div class="columns-2">
 
@@ -233,7 +234,7 @@ include_graphics("../img/deploy_key.PNG")
 
 With very few exceptions, everything tracked within Git can be recovered.  
 
-- In a "parallel universe", you never deleted that data file  
+- "deleting" a file can be undone, and is still visible
 - Begin thinking about this *before* you add files  
 - Be especially careful of PII, passwords, private keys, etc.
 
