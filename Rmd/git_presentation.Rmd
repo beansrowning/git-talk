@@ -296,10 +296,19 @@ include_graphics("../img/branches.png")
 
 `git merge` is used to merge a distant branch into the current one.
 
-- Merging does not automatically delete the branch being merged in  
-    - The history of the distant branch is also added to the current branch  
-- Most of the merges locally will be "fast-forward" merges
+<div class="columns-2">
 
+- Incorporate the history/changes of one branch into another  
+- Merging does not automatically delete the branch being merged in  
+- Change your mind? Reverse it.  
+
+<p class="forceBreak"></p>
+
+```{r merging, out.width = "400px"}
+include_graphics("../img/gh_merge.png")
+```
+
+</div>
 # Let's Take A Look
 
 ## Working With Branches  
