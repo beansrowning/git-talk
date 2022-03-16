@@ -1,7 +1,7 @@
 ---
-title: "Git: a Primer"
+title: "Git: A Primer"
 author: "Sean Browning"
-date: "March 5th, 2021"
+date: "March 18th, 2022"
 output: 
     ioslides_presentation:
         widescreen: true
@@ -27,16 +27,22 @@ opts_chunk$set(echo = FALSE)
 
 </div>
 
-## Quick note on jargon
+## Quick Note On Today's Talk
+
+- This is the third version (let me know your thoughts!)
+- Git is a huge topic, you may not learn everything today
+- [Feel free to contribute or view online](https://github.com/beansrowning/git-talk)
+
+## Quick Note On Jargon
 
 Technobabble is the name of the game here, but here's a rough guide to interpret Git-speak:
 
 > - Git : "The free computer program you're about to learn about"
-> - GitHub/GitLab : "Two websites (remotes) where you can store repositories"
+> - GitHub : "A website (remote) where you can store repositories"
 > - Repo : "short for repository, a folder that is tracked with version control"
-> - Remote : "A (remote) server that houses a copy of your repo"
-> - Commit : "Read: take a snapshot in time, or record present state"
-> - Branch / Fork : "Read: creating a parallel universe"
+> - Remote : "A server that backs up your repo"
+> - Commit : "Read: recording the present project state"
+> - Branch : "Read: an alternate version of your project"
 
 ## Agenda  
 
@@ -44,11 +50,11 @@ Technobabble is the name of the game here, but here's a rough guide to interpret
 1. Using Git locally (a crash-course in Git)
 2. Using Git with all your friends (remotes and how to talk to them)
 
-# Part 0. What is version control | and what is "Git"
+# Part 0. What Is Version Control | and what is "Git"
 
-## How many of you know the pain?  
+## Version Control In The Wild 
 
-```{r version-pic, out.width = "500px"}
+```{r version-pic, out.width = "600px"}
 # TODO: New picture
 include_graphics("../img/insanity.png")
 ```
@@ -59,11 +65,11 @@ _Is this **good** version control?_
 
 ## Motivating problems  
 
-__Why are ad-hoc approaches _often_ insufficient?__
+__Why is the standard approach _often_ insufficient?__
 
 - Lack of standards leave collaborators confused  
 - When things go bad, they get _really_ bad  
-- Project "state" is ambiguous
+- Project state is ambiguous, not always linear
 
 ```{r this_is_fine, out.width = "550px"}
 include_graphics("../img/fine.png")
@@ -73,9 +79,9 @@ include_graphics("../img/fine.png")
 
 "[git] is a stupid (but extremely fast) directory content manager.  It
 doesn't do a whole lot, but what it _does_ do is track directory
-contents efficiently. " - Linus Torvalds  
+contents efficiently." - Linus Torvalds  
 
-- Conceived by Linus Torvalds in 2005 (the "Linux guy")  
+- Linus Torvalds in 2005
 
 <div class="columns-2">
 ```{r git-lord-1, out.width="250px"}
@@ -93,30 +99,29 @@ include_graphics("../img/dvc.png")
 Read Torvalds own description of it here: https://github.com/git/git/blob/e83c5163316f89bfbde7d9ab23ca2e25604af290/README
 </div>
 
-## Okay, but what _is_ it  
+## Okay, But What _Is_ It  
 
 Git is a tool for tracking the state of your project
 
-- Maintain a detailed revision history
-- View tracked files at any prior state  
-- Create separate "parallel universes" seamlessly  
-- Merge changes in a sensible and predictable way 
+- Maintain a detailed revision history of the files you want    
+- Create and jump between many different saved versions 
+- Incorporate changes in a predictable (and reversible) way 
 
 <div class="centered">
 
-```{r snapshot, out.width = "400px"}
+```{r snapshot, out.width = "350px"}
 include_graphics("../img/snapshot.jpg")
 ```
 
 </div>
 
-# How to Git it  
+# How To Git It  
 
-## Gitting set up | Git for Windows  
+## Gitting Set Up | Git for Windows  
 
 - __Required regardless of what interface you use__
-- Command line daunting for the casual user
-- Default commit message editor is Vim (which is _really_ daunting to the casual user)
+- Mostly command line-based, also ships with lightweight GUI
+- _Interface can be daunting to the casual user_  
 
 <div class="columns-2">
 
@@ -129,157 +134,135 @@ include_graphics("../img/git_for_win.png")
 ```
 </div>
 
-## Gitting set up | Github Desktop
+## Gitting Set Up | Github Desktop
 
-- Serves as a "point-and-click" interface for Git operations
+- Serves as a "point-and-click" interface for most Git operations
 - Easily manage a large number of repositories from one app  
-- _I will be using Github Desktop to demonstrate a GUI interface_  
+- _I will be using Github Desktop for this talk_  
 
-<div class="centering">
+<div class="columns-2">
 
 ```{r gh_desktop, out.width = "500px"}
 include_graphics("https://cloud.githubusercontent.com/assets/359239/26094502/a1f56d02-3a5d-11e7-8799-23c7ba5e5106.png")
 ```
 
+```{r gh, out.width = "300px"}
+include_graphics("../img/github.jpg")
+```
 </div>
 
-# Part 1. Local Git commands | Let's git going  
+# Part 1. Using Git Locally | Let's git going  
 
-## Local Git commands  
+## Local Git Commands  
 
 Primary objectives:  
 
 - Start a new repository
 - Create and add files to it
-- Create and merge branches
-- Checkout previous revisions / other branches
+- View previous revisions / other branches
 
 ```{r file-stages-1, out.width = "500px"}
 include_graphics("https://git-scm.com/book/en/v2/images/lifecycle.png")
 ```
 
-## Local Git commands 
-
-I'll present each Git operation with it's command line name.
-
-Focus on the association of the name to its respective operation, but don't worry about memorizing them!  
+## Local Git Commands 
 
 _(We will not be using command line here)_
 
-```{r hackerman, out.width = "400px"}
+- The lesson here won't fully translate to command line
+- Hopefully this serves as a starting place for most
+
+```{r hackerman, out.width = "300px"}
 include_graphics("../img/hackerman.png")
 ```
 
-<div class="notes">
-It's a difficult thing, isn't it? The task is to teach Git without really going to the command line at all.
+## Creating A New Repository | git init
 
-I'd like to start by building familiarity with the concepts. From there, hopefully it becomes a bit easier to talk about things.
-</div>
-
-## Dataflow visualized
-
-```{r git-transport-2, out.width = "500px"}
-include_graphics("../img/git-transport.png")
-```
-
-credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
-
-## Create a repository | git init
-
-- `git init` creates an empty repository to begin tracking your files  
+- Create a new project folder, or select and existing one
 - Ideally you would create a repository at the start, but you can do so at any time  
-- Not every file present in your project folder has to be tracked in the repo  
+- You don't have to (and probably shouldn't) track every file 
 
-```{r init, out.width = "500px"}
+<div class="columns-2">
+
+```{r init, out.width = "400px"}
 include_graphics("../img/gh_init.png")
 ```
 
-## View file status | git status
+<p class="forceBreak"></p>
 
-`git status` displays the current state of files in your project
+```{r init2, out.width = "250px"}
+include_graphics("../img/init.png")
+```
+
+
+</div>
+
+## View File Status | git status/add
 
 <div class="columns-2">
-With Git there are four "states" that your files can reside in:  
+All unsaved changes to your repository will show up here  
 
-- Untracked  
-- Unmodified  
-- Modified
-- Staged  
+- Add changes to commit to history
+- Deselect any changes to ignore
+
+<p class="forceBreak"></p>
 
 ```{r file-stages, out.width = "450px"}
-include_graphics("../img/file_status.png")
+include_graphics("../img/status.png")
 ```
 
 </div>
 
-## Tracking your files | git add
+## Recording Your Changes | git commit
 
-To add a file to your repository, we use the `git add` command.
+Label your changes!
 
-- We can also use this command to stage changes of modified files
-- Files added are "staged", but we haven't fully "saved" or "committed"
+<div class="columns-2">
 
-```{r git-add, out.width = "450px"}
-include_graphics("../img/add_before.png")
-```
-```{r git-add-2, out.width = "500px"}
-include_graphics("../img/add_after.png")
-```
+- Make a succinct but useful title
+- Provide more details on what changes were made
 
-## Recording your changes | git commit
-
-`git commit` creates a record of all tracked files that you've staged.
-
-Produces a message with three core parts:
-
-- Commit message (_"Made implicitly missing data explicit"_)
-- Commit author (me)  
-- SHA1 hash (unique to every commit, used to reference)
+<p class="forceBreak"></p>
 
 ```{r commit, out.width = "500px"}
-include_graphics("../img/commit.png")
+include_graphics("../img/commit_gh.png")
 ```
 
-## Removing a file from the repo | git rm
+</div>
 
-`git rm` removes a file both from disk and from the repo
-
-- Base operation the same as deleting file and then staging the changes  
-- Removes the files from the current index (and all future commits)
-
-## Be mindful of what you track!  
+## Be Mindful Of What You Commit!  
 
 ```{r deploy_key, out.width = "800px"}
 include_graphics("../img/deploy_key.PNG")
 ```
 
-## Be mindful of what you track!  
+## Be Mindful Of What You Commit!  
 
 With very few exceptions, everything tracked within Git can be recovered.  
 
-- In a "parallel universe", you never deleted that data file  
-- Begin thinking about this *before* you make a commit
+- "deleting" a file can be undone, and is still visible
+- Begin thinking about this *before* you add files  
 - Be especially careful of PII, passwords, private keys, etc.
 
-## "ignoring" files | or: practicing mindfulness  
+## "Ignoring" Files | Or: Practicing Mindfulness  
 
 With a `.gitignore` file in your repo, you can specify explicitly what files or folders you want to remain un-tracked.  
 
-- This is simply a file in your root folder
+- This is simply a plaintext file in your root folder
 - [Templates](https://github.com/github/gitignore) are available online for many languages and project types
 
 ```{r ignore, out.width = "500px"}
 include_graphics("../img/ignore.png")
 ```
 
-# Seeing it in action
+# Seeing It In Action
 
 ## Demonstration  
 
 Let's see how all of these commands work for a simple task:  
 
 - Initialize a new repository in GitHub Desktop 
-- Create and commit a simple script from RStudio  
+- Create and commit a simple script   
 - Create an commit a `.gitignore` file  
 - Remove an unwanted file from the repository  
 
@@ -287,12 +270,11 @@ Let's see how all of these commands work for a simple task:
 Here we will create a new repository
 </div>
 
-
 ## Enter: Branching
 
-Changes don't have to be linear!
+Changes aren't always linear!
 
-A branch allows you to diverge from the main track while keeping the state of the main track intact.  
+A branch allows you to work on changes to your project while keeping the "working" state intact.  
 
 - A branch inherits its history from its parent
 - Easily merge back in changes you made in the branch (even if the parent continues to develop independently)  
@@ -305,7 +287,7 @@ include_graphics("../img/branch.png")
 
 </div>
 
-## Creating a branch | git branch
+## Creating/Switching Branches | git branch
 
 `git branch` creates a new branch off of the current one
 
@@ -316,27 +298,26 @@ include_graphics("../img/branch.png")
 include_graphics("../img/branches.png")
 ```
 
-
-## Switching branches | git checkout  
-
-`git checkout` is used to switch between branches and a few more things:  
-
-- The same function is used to "checkout" a previous commit  
-- Also used to "un-modify" a file (ie. modified -> unmodified)
-    - `git checkout -- <file>`
-    - **This effectively erases any unstaged progress!**  
-
-## Merging branches | git merge  
+## Merging Branches | git merge  
 
 `git merge` is used to merge a distant branch into the current one.
 
+<div class="columns-2">
+
+- Incorporate the history/changes of one branch into another  
 - Merging does not automatically delete the branch being merged in  
-    - The history of the distant branch is also added to the current branch  
-- Most of the merges locally will be "fast-forward" merges
+- Change your mind? Reverse it.  
 
-# Let's take a look
+<p class="forceBreak"></p>
 
-## Working with branches  
+```{r merging, out.width = "400px"}
+include_graphics("../img/gh_merge.png")
+```
+
+</div>
+# Let's Take A Look
+
+## Working With Branches  
 
 Looking back at the same repo we created earlier, let's try out these new commands:  
 
@@ -344,12 +325,7 @@ Looking back at the same repo we created earlier, let's try out these new comman
 - Make changes in our new branch and merge them into master  
 - Checkout a past commit  
 
-<div class="notes">
-If you're following along with no git installation, you might try the GitHub  
-visualization tool to test these concepts: http://git-school.github.io/visualizing-git/  
-</div>
-
-## Where merges git dicey  
+## Where Merges Git Dicey  
 
 If you (or your team) develops on more than one branch concurrently, you may run into merge conflicts.  
 
@@ -361,7 +337,7 @@ If you (or your team) develops on more than one branch concurrently, you may run
 include_graphics("../img/conflict.png")
 ```
 
-## Fixing a merge conflict
+## Fixing A Merge Conflict
 
 Git will provide indicators in any files containing merge conflicts indicating what lines deviate  
 
@@ -374,56 +350,42 @@ I'm not a lawyer
 ```
 
 - Fix the document as you want it to appear and stage the changes
-- Sometimes it's not an A/B problem and will require revision  
+- Sometimes it's not an A/B problem and will require revision    
 
-Let's demonstrate...  
+# Part 2. Using Git With All Your Friends  
 
-# Part 2. Using Git with all your friends  
+# Almost There!
 
-# Almost there!
+## Starting A New Project On GitHub
 
-## Starting a new project on GitLab
-
-When using GitLab or GitHub, you can start your repository directly from the website  
+When using GitHub, you can start your repository directly from the website  
 
 - You can also create a blank repository and push a repo you've already created locally  
-- Projects can be housed under either a user or group namespace  
-- Optionally set visibility (just _how_ collaborative do you want to be?)
+- Projects can be housed under either a user, group, or CDC namespace  
+- Optionally set visibility
 
 __Let's take a look...__  
 
-## Interacting with remotes
+## GitHub Namespaces
+
+You have two main options here, depending on your project requirements:
+
+- CDCGov: Public-facing, externally visible
+- CDCEnt: Private projects, no external access
+
+```{r cdcgov, out.width = "600px"}
+include_graphics("../img/cdcgov.png")
+```
+
+## Interacting With Remotes
 
 Now that we have a _remote_ repository set up, we need to introduce just three more git commands to interact with that repository:
 
-- git clone  
-- git pull
-- git push
+- clone  
+- pull/fetch
+- push
 
-<div class="notes">
-
-If you're reading this it's because you saw that I'm skipping fetch and died a little inside.
-
-I think fundamentally fetch is the safer and better option for most projects, but for small scale projects most will likely not notice the difference (especially if they're working alone).
-
-Those that do notice will discover the difference eventually, and it avoids having to teach it here in such a short time slot.
-
-For the astute among you who read this:
-
-git fetch pulls refs and objects from the remote, but does not merge them in.
-git pull performs a fetch and then attempts to merge them
-
-</div>
-
-## Recall our Dataflow
-
-```{r git-transport, out.width = "500px"}
-include_graphics("../img/git-transport.png")
-```
-
-credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
-
-## Cloning an existing repository | git clone  
+## Cloning An Existing Repository | git clone  
 
 `git clone` creates a local copy of a remote repository  
 
@@ -435,7 +397,7 @@ credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
 include_graphics("../img/agent_clone.jpg")
 ```
 
-## Gitting changes from remote | git pull  
+## Gitting Changes From Remote | git pull/fetch  
 
 `git pull` returns any updates from a remote repository and merges them locally  
 
@@ -443,12 +405,13 @@ include_graphics("../img/agent_clone.jpg")
 - `fetch` is safer because it does not attempt to merge automatically  
 - When in doubt, just look at the changes online  
 
-## Pushing your changes | git push  
+## Pushing Your Changes | git push  
 
-Finally, we send our updates to the remote repository using `git push`
+Finally, we send our updates to the remote repository using `push`
 
 - Double check that everything is in order _before_ you push  
 - It's best practice to always `pull` before `commit` and `push`
+- Make sure you push your changes so everyone can access them  
 
 ```{r push, out.width = "450px"}
 include_graphics("../img/push.jpg")
@@ -484,7 +447,7 @@ include_graphics("../img/messages.jpg")
 
 </div>
 
-## There's a lot more here to talk about  
+## There's A Lot More To Talk About  
 
 Stashing, blaming, diffing, cherry-picking, rebasing
 
@@ -494,12 +457,13 @@ We will stop here for the sake of time and to avoid overload
 include_graphics("../img/stop.gif")
 ```
 
-## Getting help
+## Getting Help
 
 I hope you'll continue to explore!
 
 - These slides (and the Rmd source) are available on [GitHub](https://github.com/beansrowning/git-talk)  
 - Ready for a deeper dive? Check out the [book](https://git-scm.com/book/en/v2)
+- Working on the command line? Try this [Katacoda course](https://www.katacoda.com/courses/git).
 
 ```{r help, out.width = "500px"}
 include_graphics("../img/help.gif")
