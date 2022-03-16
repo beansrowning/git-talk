@@ -27,7 +27,13 @@ opts_chunk$set(echo = FALSE)
 
 </div>
 
-## Quick note on jargon
+## Quick Note On Today's Talk
+
+- This is the third version (let me know your thoughts!)
+- Git is a huge topic, you may not learn everything today
+- [Feel free to contribute or view online](https://github.com/beansrowning/git-talk)
+
+## Quick Note On Jargon
 
 Technobabble is the name of the game here, but here's a rough guide to interpret Git-speak:
 
@@ -44,9 +50,9 @@ Technobabble is the name of the game here, but here's a rough guide to interpret
 1. Using Git locally (a crash-course in Git)
 2. Using Git with all your friends (remotes and how to talk to them)
 
-# Part 0. What is version control | and what is "Git"
+# Part 0. What Is Version Control | and what is "Git"
 
-## Version control in the wild 
+## Version Control In The Wild 
 
 ```{r version-pic, out.width = "600px"}
 # TODO: New picture
@@ -344,9 +350,7 @@ I'm not a lawyer
 ```
 
 - Fix the document as you want it to appear and stage the changes
-- Sometimes it's not an A/B problem and will require revision  
-
-Let's demonstrate...  
+- Sometimes it's not an A/B problem and will require revision    
 
 # Part 2. Using Git With All Your Friends  
 
@@ -369,15 +373,17 @@ You have two main options here, depending on your project requirements:
 - CDCGov: Public-facing, externally visible
 - CDCEnt: Private projects, no external access
 
+```{r cdcgov, out.width = "600px"}
+include_graphics("../img/cdcgov.png")
+```
+
 ## Interacting With Remotes
 
 Now that we have a _remote_ repository set up, we need to introduce just three more git commands to interact with that repository:
 
-- git clone  
-- git pull
-- git push
-
-credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
+- clone  
+- pull/fetch
+- push
 
 ## Cloning An Existing Repository | git clone  
 
@@ -391,7 +397,7 @@ credit [Oliver Steele](https://blog.osteele.com/2008/05/my-git-workflow/)
 include_graphics("../img/agent_clone.jpg")
 ```
 
-## Gitting Changes From Remote | git pull  
+## Gitting Changes From Remote | git pull/fetch  
 
 `git pull` returns any updates from a remote repository and merges them locally  
 
@@ -401,10 +407,11 @@ include_graphics("../img/agent_clone.jpg")
 
 ## Pushing Your Changes | git push  
 
-Finally, we send our updates to the remote repository using `git push`
+Finally, we send our updates to the remote repository using `push`
 
 - Double check that everything is in order _before_ you push  
 - It's best practice to always `pull` before `commit` and `push`
+- Make sure you push your changes so everyone can access them  
 
 ```{r push, out.width = "450px"}
 include_graphics("../img/push.jpg")
